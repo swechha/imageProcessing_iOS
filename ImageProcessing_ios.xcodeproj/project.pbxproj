@@ -18,12 +18,13 @@
 		BFD951B3177C6C1C004CE54E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BFD951B2177C6C1C004CE54E /* Default-568h@2x.png */; };
 		BFD951B6177C6C1C004CE54E /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFD951B4177C6C1C004CE54E /* MainStoryboard_iPhone.storyboard */; };
 		BFD951B9177C6C1C004CE54E /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFD951B7177C6C1C004CE54E /* MainStoryboard_iPad.storyboard */; };
-		BFD951BC177C6C1C004CE54E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD951BB177C6C1C004CE54E /* ViewController.m */; };
+		BFD951BC177C6C1C004CE54E /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = BFD951BB177C6C1C004CE54E /* ViewController.mm */; };
 		BFD951C4177C6C1D004CE54E /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD951C3177C6C1C004CE54E /* SenTestingKit.framework */; };
 		BFD951C5177C6C1D004CE54E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD9519C177C6C1C004CE54E /* UIKit.framework */; };
 		BFD951C6177C6C1D004CE54E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD9519E177C6C1C004CE54E /* Foundation.framework */; };
 		BFD951CE177C6C1D004CE54E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BFD951CC177C6C1D004CE54E /* InfoPlist.strings */; };
 		BFD951D1177C6C1D004CE54E /* ImageProcessing_iosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BFD951D0177C6C1D004CE54E /* ImageProcessing_iosTests.m */; };
+		BFD951DB177C6C47004CE54E /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFD951DA177C6C47004CE54E /* opencv2.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,13 +54,14 @@
 		BFD951B5177C6C1C004CE54E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		BFD951B8177C6C1C004CE54E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		BFD951BA177C6C1C004CE54E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		BFD951BB177C6C1C004CE54E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		BFD951BB177C6C1C004CE54E /* ViewController.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
 		BFD951C2177C6C1C004CE54E /* ImageProcessing_iosTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImageProcessing_iosTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD951C3177C6C1C004CE54E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		BFD951CB177C6C1D004CE54E /* ImageProcessing_iosTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ImageProcessing_iosTests-Info.plist"; sourceTree = "<group>"; };
 		BFD951CD177C6C1D004CE54E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BFD951CF177C6C1D004CE54E /* ImageProcessing_iosTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageProcessing_iosTests.h; sourceTree = "<group>"; };
 		BFD951D0177C6C1D004CE54E /* ImageProcessing_iosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageProcessing_iosTests.m; sourceTree = "<group>"; };
+		BFD951DA177C6C47004CE54E /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = "../../../Downloads/opencv-2.4.5/ios/ios/opencv2.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFD951DB177C6C47004CE54E /* opencv2.framework in Frameworks */,
 				BFD9519D177C6C1C004CE54E /* UIKit.framework in Frameworks */,
 				BFD9519F177C6C1C004CE54E /* Foundation.framework in Frameworks */,
 				BFD951A1177C6C1C004CE54E /* CoreGraphics.framework in Frameworks */,
@@ -89,6 +92,7 @@
 		BFD95190177C6C1C004CE54E = {
 			isa = PBXGroup;
 			children = (
+				BFD951DA177C6C47004CE54E /* opencv2.framework */,
 				BFD951A2177C6C1C004CE54E /* ImageProcessing_ios */,
 				BFD951C9177C6C1D004CE54E /* ImageProcessing_iosTests */,
 				BFD9519B177C6C1C004CE54E /* Frameworks */,
@@ -124,7 +128,7 @@
 				BFD951B4177C6C1C004CE54E /* MainStoryboard_iPhone.storyboard */,
 				BFD951B7177C6C1C004CE54E /* MainStoryboard_iPad.storyboard */,
 				BFD951BA177C6C1C004CE54E /* ViewController.h */,
-				BFD951BB177C6C1C004CE54E /* ViewController.m */,
+				BFD951BB177C6C1C004CE54E /* ViewController.mm */,
 				BFD951A3177C6C1C004CE54E /* Supporting Files */,
 			);
 			path = ImageProcessing_ios;
@@ -276,7 +280,7 @@
 			files = (
 				BFD951A9177C6C1C004CE54E /* main.m in Sources */,
 				BFD951AD177C6C1C004CE54E /* AppDelegate.m in Sources */,
-				BFD951BC177C6C1C004CE54E /* ViewController.m in Sources */,
+				BFD951BC177C6C1C004CE54E /* ViewController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -395,6 +399,10 @@
 		BFD951D5177C6C1D004CE54E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../Downloads/opencv-2.4.5/ios/ios\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ImageProcessing_ios/ImageProcessing_ios-Prefix.pch";
 				INFOPLIST_FILE = "ImageProcessing_ios/ImageProcessing_ios-Info.plist";
@@ -406,6 +414,10 @@
 		BFD951D6177C6C1D004CE54E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../Downloads/opencv-2.4.5/ios/ios\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ImageProcessing_ios/ImageProcessing_ios-Prefix.pch";
 				INFOPLIST_FILE = "ImageProcessing_ios/ImageProcessing_ios-Info.plist";

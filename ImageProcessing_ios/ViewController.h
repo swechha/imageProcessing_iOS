@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+
+@property (nonatomic, retain) IBOutlet UIImageView *imageView;
+@property (nonatomic, retain) IBOutlet UIButton *effectButton;
+@property (nonatomic, retain) IBOutlet UIButton *selectPhotoButton;
+
+-(IBAction)selectPhoto:(id)sender;
+-(IBAction)applyEffect:(id)sender;
 
 @end
