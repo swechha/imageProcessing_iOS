@@ -15,12 +15,16 @@
 @implementation ViewController
 
 @synthesize imageView = _imageView;
-@synthesize effectButton = _effectButton;
 @synthesize selectPhotoButton = _selectPhotoButton;
+@synthesize brightness = _brightness;
+@synthesize inputImage = _inputImage;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _brightness.minimumValue = 0.00;
+    _brightness.maximumValue = 2.00;
+    [_brightness setValue:1.00];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -103,35 +107,10 @@
 
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
-    CGSize imageSize = chosenImage.size;
+    _inputImage = info[UIImagePickerControllerEditedImage];
     
-    
-    //if (imageSize.height > _imageView.frame.size.height || imageSize.width > _imageView.frame.size.width)
-    //{
-        NSLog(@"Entering the if loop");
-        float imageRatio = imageSize.width/imageSize.height;
-        float viewRatio = _imageView.frame.size.width/_imageView.frame.size.height;
-        float newWidth = 0.0;
-        float newHeight = 0.0;
-        if (imageRatio > viewRatio)
-        {
-            newWidth = _imageView.frame.size.width;
-            newHeight = imageSize.height/(imageSize.width/newWidth);
-        }
-        else if (imageRatio < viewRatio)
-        {
-            newHeight = _imageView.frame.size.height;
-            newWidth = imageSize.width/(imageSize.height/newHeight);
-        }
-        
-        UIGraphicsBeginImageContext(CGSizeMake(newWidth, newHeight));
-        [chosenImage drawInRect:CGRectMake(0,0,newWidth,newHeight)];
-        chosenImage = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-    //}
-    
-    self.imageView.image = chosenImage;
+    self.imageView.image = _inputImage;
+    _imageView.contentMode = UIViewContentModeScaleAspectFit;
     
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
@@ -141,12 +120,30 @@
     [picker dismissViewControllerAnimated:YES completion:NULL];
 }
 
--(IBAction)applyEffect:(id)sender
+-(IBAction)controlBrightness:(UISlider *)sender
 {
-    UIImage *inputImage = _imageView.image;
-    cv::Mat mat = [self cvMatFromUIImage:inputImage];
-    cv::Mat dest_mat(inputImage.size.width, inputImage.size.height, CV_8UC4);
-    cv::Laplacian(mat, dest_mat, 3);
+    if(_imageView.image == NULL)
+        return;
+    cv::Mat mat = [self cvMatFromUIImage:_inputImage];
+    cv::Mat dest_mat(_inputImage.size.width, _inputImage.size.height, CV_8UC4);
+    cv::Mat intermediate_mat(_inputImage.size.width, _inputImage.size.height, CV_8UC4);
+    
+    //cv::flip(mat, dest_mat, 1);
+    float currentBrightness = sender.value;
+    currentBrightness = currentBrightness-1.00;
+    NSLog(@"%f",currentBrightness);
+    
+    if(currentBrightness < 0.00)
+    {
+        currentBrightness = fabsf(currentBrightness);
+        cv::multiply(mat, currentBrightness, intermediate_mat);
+        cv::subtract(mat, intermediate_mat, dest_mat);
+    }
+    else
+    {
+        cv::multiply(mat, currentBrightness, intermediate_mat);
+        cv::add(mat, intermediate_mat, dest_mat);
+    }
     UIImage *finalImage = [self UIImageFromCVMat:dest_mat];
     _imageView.image = finalImage;
 }

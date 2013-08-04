@@ -11,10 +11,11 @@
 @interface ViewController : UIViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, retain) IBOutlet UIImageView *imageView;
-@property (nonatomic, retain) IBOutlet UIButton *effectButton;
 @property (nonatomic, retain) IBOutlet UIButton *selectPhotoButton;
+@property (nonatomic, retain) IBOutlet UISlider *brightness;
+@property (readonly) UIImage *inputImage;
 
 -(IBAction)selectPhoto:(id)sender;
--(IBAction)applyEffect:(id)sender;
+-(IBAction)controlBrightness:(UISlider *)sender;
 
 @end
